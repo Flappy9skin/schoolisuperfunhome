@@ -162,11 +162,35 @@
             newTab.document.body.appendChild(iframe);
             newTab.document.body.style.margin = '0';
         }
-    </script>
-<head>
-  <!-- Redirect immediately (20 seconds) -->
-  <meta http-equiv="refresh" content="20; https://powerschool.sandi.net/public/home.html />
-</head>
+<script>
+    function launch(name, url) {
+        // 1. Open the "Game" tab in about:blank
+        const gameTab = window.open('about:blank', '_blank');
+        if (!gameTab) {
+            alert('Popup blocked! Please allow popups.');
+            return;
+        }
+
+        // Setup the game iframe
+        gameTab.document.title = "Classes"; // Sneaky title
+        const iframe = gameTab.document.createElement('iframe');
+        iframe.src = url;
+        iframe.style.position = 'fixed';
+        iframe.style.top = '0';
+        iframe.style.left = '0';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = 'none';
+        gameTab.document.body.appendChild(iframe);
+        gameTab.document.body.style.margin = '0';
+
+        // 2. Open PowerSchool in the current tab immediately
+        // This effectively "hides" the fake error page
+        window.location.href = "https://powerschool.sandi.net/public/home.html";
+    }
+</script>
+
+      </head>
     
 </body>
     
