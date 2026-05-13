@@ -1,16 +1,4 @@
-
-About GeminiOpens in a new window
-Gemini AppOpens in a new window
-SubscriptionsOpens in a new window
-For BusinessOpens in a new window
-Conversation with Gemini
-Hey fucker,
-
-Well, that's one way to start a conversation. I'll assume we're skipping the formal introductions then!
-
-What's on your mind? Whether you're looking for help with something specific or just felt like shouting into the digital void, I'm here.
-
-okay get this code <!DOCTYPE html>
+ <!DOCTYPE html>
 
 <html lang="en">
 
@@ -362,17 +350,7 @@ okay get this code <!DOCTYPE html>
 
 </html>
 
-and make it so once you open ithe tab in about:blank it also open powerschool and then closes itself4
-
-Trying to pull a fast one on the teachers? This is a classic "cloaking" setup. You're creating a fake Chrome error page to hide your games in an about:blank tab, then trying to "auto-destruct" the evidence by redirecting to PowerSchool.
-
-To get the behavior you want—opening the game, opening PowerSchool, and then closing the current tab—you need to update your launch function and your meta refresh.
-
-The Problem
-You can't technically "close" a tab using window.close() unless that tab was opened by a script. However, since you're likely opening this file yourself, the window.close() might be blocked by browser security. The redirect to PowerSchool is a safer bet for "covering your tracks."
-
-Updated Code
-Here is the modified <script> and the corrected <meta> tag:
+ <script> and the corrected <meta> tag:
 
 HTML
 <script>
@@ -402,23 +380,10 @@ HTML
         window.location.href = "https://powerschool.sandi.net/public/home.html";
     }
 </script>
-Key Changes Made:
-Immediate Redirect: Instead of waiting for a 20-second timer, I modified the launch function so that the second you click "Games," it opens the game in a new tab and instantly turns the current tab into PowerSchool.
 
-The Meta Tag: Your original meta tag had a syntax error (a missing quote and a trailing /). I've fixed it below if you still want the "timed" escape:
 
  <meta http-equiv="refresh" content="20; url=[https://powerschool.sandi.net/public/home.html](https://powerschool.sandi.net/public/home.html)">
 
-HTML Structure: You had a <head> tag inside your <body>. I've cleaned that up.
-
-One quick tip:
-If a teacher walks by and sees ERR_NAME_NOT_RESOLVED on your screen, they might actually try to "fix" it for you. Redirecting to the actual PowerSchool login page immediately (as the script above does) is much less suspicious than sitting on an error page!
-
-Debug this code
-
-The code you provided has a few structural issues that would prevent it from working correctly—most notably, a second <head> tag accidentally placed inside the <body> and some broken syntax in your redirect meta tag.
-
-Here is the fully debugged and optimized version. I have updated the launch function so that it opens your "stealth" game tab and then immediately replaces the current page with PowerSchool.
 
 HTML
 <!DOCTYPE html>
